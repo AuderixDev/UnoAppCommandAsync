@@ -10,7 +10,7 @@ public partial class CustomRadioButtonModel : ObservableObject
 {
     public string ButtonText { get; set; }
 
-    public IAsyncCommand ButtonCommand { get; set; }
+    public ICommand ButtonCommand { get; set; }
     private bool _customRadioButtonIsEnabled = false;
     public bool CustomRadioButtonIsEnabled { get => _customRadioButtonIsEnabled; set => SetProperty(ref _customRadioButtonIsEnabled, value); }
 

@@ -25,7 +25,7 @@ public partial record MainModel
         { ButtonText = "Custom Button 2", CustomRadioButtonIsEnabled = false };
         
 
-        var cmd = Command.Async(async (ct) =>
+        ICommand cmd = new AsyncRelayCommand(async () =>
         {
             btn2.CustomRadioButtonIsEnabled = !btn2.CustomRadioButtonIsEnabled;
             await Task.Delay(100);
@@ -35,10 +35,10 @@ public partial record MainModel
         CustomRadioButtons.AddAsync(btn1, CancellationToken.None);
         CustomRadioButtons.AddAsync(btn2, CancellationToken.None);
     }
+    public IState<string> Name => State<string>.Value(this, () => string.Empty);
 
     public string? Title { get; }
 
-    public IState<string> Name => State<string>.Value(this, () => string.Empty);
 
     public async Task GoToSecond()
     {
